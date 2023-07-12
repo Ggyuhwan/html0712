@@ -1,22 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>기본표 만들기</title>
 </head>
+
 <body>
     <h1>기본 구조를 가진표</h1>
     <hr>
+    <!-- shift + alt + f 자동정렬
+    td 속성 rowspan :행병합, colspan:열병합 value(값)은 병합칸수 -->
     <table border="1">
         <tbody>
-            <tr><td>길동</td><td>90</td><td>80</td><td>70</td></tr>
-            <tr><td>동무</td><td>90</td><td>80</td><td>70</td></tr>
-            <tr><td>팽수</td><td>90</td><td>80</td><td>70</td></tr>
-            <tr><td>종족</td></tr>
+            <tr>
+                <td colspan="1">공백</td>
+                <td colspan="6">스크린</td>
+                <td colspan="1">공백</td>
+            </tr>
+            <tr>
+                <td colspan="8">공백</td>
+            </tr>
+            <tr>
+                <td colspan="2">공백</td>
+                <td rowspan="5">공백</td>
+                <td>이규환</td>
+                <td>최민혁</td>
+                <td rowspan="5">공백</td>
+                <td colspan="2">공백</td>
+            </tr>
+            <tr>
+                <td>정동균</td>
+                <td>노윤기</td>
+                <td>이상희</td>
+                <td>조하은</td>
+                <td>김규영</td>
+                <td>김성운</td>
+            </tr>
+            <tr>
+                <td>최성웅</td>
+                <td>사원기</td>
+                <td>윤가영</td>
+                <td>박근혜</td>
+                <td>송현지</td>
+                <td>김세준</td>
+            </tr>
+            <tr>
+                <td>이영규</td>
+                <td>이재우</td>
+                <td>신가희</td>
+                <td>임지윤</td>
+                <td>정민형</td>
+                <td>예준서</td>
+            </tr>
+            <tr>
+                <td colspan="2">공백</td>
+
+                <td>윤서준</td>
+                <td>이호제</td>
+                <td>김동현</td>
+                <td>김상준</td>
+            </tr>
 
         </tbody>
     </table>
 
 </body>
+
 </html>
