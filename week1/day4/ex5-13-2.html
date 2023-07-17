@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전환3</title>
+    <style>
+        li{list-style: none;}
+        #nav #gnb ul {overflow: hidden;}
+        #nav #gnb ul li{float: left;width: 100px;height: 50px;background-color: green;
+        margin-right: 5px;text-align: center;
+        transition-duration: 2s, 2s;/*앞 2초 뒤 2초*/}
+        #nav #gnb ul li:nth-child(1) {transition-delay: 2s;}                    /*디폴트 선형적으로*/
+        #nav #gnb ul li:nth-child(2) {transition-timing-function: ease;}        /*천 ~ 빠르게 ~ 천*/
+        #nav #gnb ul li:nth-child(3) {transition-timing-function: ease-in;}     /*시작 느 ~ */
+        #nav #gnb ul li:nth-child(4) {transition-timing-function: ease-out;}    /*끝 느*/
+        #nav #gnb ul li:nth-child(5) {transition-timing-function: ease-in-out;}/*느 느*/
+        
+        #nav #gnb ul li:nth-child(1):hover{height: 250px;background-color: #353a17;color: white;}
+        #nav #gnb ul li:nth-child(2):hover{height: 250px;background-color: #173b37;color: white;}
+        #nav #gnb ul li:nth-child(3):hover{height: 250px;background-color: #17173b;color: white;}
+        #nav #gnb ul li:nth-child(4):hover{height: 250px;background-color: #b1723b;color: white;}
+        #nav #gnb ul li:nth-child(5):hover{height: 250px;background-color: #3b1717;color: white;}
+        
+    </style>
+</head>
+<body>
+
+    <div id="nav">
+        <div id="gnb">
+            <ul>
+                <li>GNB_01</li>
+                <li>GNB_02</li>
+                <li>GNB_03</li>
+                <li>GNB_04</li>
+                <li>GNB_05</li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>

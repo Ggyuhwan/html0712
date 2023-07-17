@@ -6,38 +6,40 @@
     <title>Document</title>
     <style>
         html{height: 100%;}
+        span{margin: 0;padding: 0;
+            color: rgb(140, 127, 255);
+            float:left;
+            width: 33%;
+            height: 100%;
+            line-height: 50px;
+            text-align: center;
+            background-color: aquamarine;
+            position: relative; z-index: 1;
+             }
+        
         #container{position: relative; text-align: center;
         padding-left: 20%; padding-top: 20%;}
         #bg { position: fixed; left: 0%; right: 0%; width: auto;
         min-width: 100%;min-height: 100%;}
         a{color: black;}
-        li{position: absolute;
-            z-index: -1;
-            margin: 0;padding: 0;
-            color: rgb(140, 127, 255);
-            float:left;
-            width: 30%;
-            height: 100%;
-            line-height: 50px;
-            text-align: center;
-            background-color: aquamarine;
-        }
+        
        
         #a:hover{position: relative;color: blueviolet;}
     </style>
 </head>
 <body>
-    <ul>
-    <li id="a">홈</li>
-    <li id="a">메뉴</li>
-    <li id="a">롤</li>
-</ul>
+    <span id="a">홈</span>
+    <span id="a">메뉴</span>
+    <span id="a">롤</span>
+    
     <video src="./video/nico.mp4"id="bg" autoplay
     muted poster="img/apple.png"> </video>
+    
     <div id="container">
+        
         <h2>무릇 움직이는건 바람도 아니오 촛불도 아니다.</h2>
-        <h1><a href="#">너의 마음이다.</a></h1>
-
+        <h1><a href="#">어디로 가야 하오.</a></h1>
+      
     </div>
 </body>
 </html>

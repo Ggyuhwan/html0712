@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스를 올려보세요</title>
+    <style>
+        #container{position: relative;margin: 0; position: 0;}
+        #container img{margin: 0; position: 0; float: left;z-index: 1;}
+        /* opacity 투명도 */
+        #container:hover #circle1{opacity: 0; transform: translateY(250px);}
+        #circle1 { position: absolute;width: 500px;height: 500px;border-radius: 250px;
+                padding-top: 20px;background-color: darkcyan;
+            opacity: 1;transition: all 0.5s ease-in-out ;z-index: 2;}
+            #circle1 p { font-size: 50px; color: white; text-align: center;}
+    </style>
+</head>
+<body>
+    
+    <div id="container">
+        <img src="/day44/img/earth.png" width="500px"alt="">
+        <div id="circle1">
+            <p>지구입니다.</p>
+        </div>
+    </div>
+
+
+</body>
+</html>

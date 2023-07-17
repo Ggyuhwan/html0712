@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션</title>
+    <style>
+        /*애니메이션 정의*/
+        @keyframes bomb{
+            0% {font-size: 100%;}
+            30%{font-size: 500%;}
+            100%{font-size: 100%;}
+        }
+        @keyframes colorChange { from {color: blue;} to {color: red;}}
+        h3{animation-name: bomb; animation-duration: 3s; animation-iteration-count: infinite;}
+        p{animation-name: bomb; animation-duration: 10s; animation-iteration-count: infinite;}
+        h2{animation-name: colorChange; animation-duration: 2s; animation-iteration-count: infinite;}
+    </style>
+</head>
+<body>
+    <h2>색 변경</h2>
+    <h3>오잉</h3>
+    <hr>
+    <p> 오잉! 글자가 3초 동안 500% - > 100% 로 바뀌는 애니메이션(무한반복)</p>
+</body>
+</html>
