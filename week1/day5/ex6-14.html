@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if-else</title>
+</head>
+<body>
+    <h3>if-else를 이용한 학점 츨력</h3>
+    <hr>
+    <script>
+        let grade;
+        // prompt(a, b) 사용자 입력을 받는 함수
+        // 매개변수는 2개 이지만 1개만 사용가능
+        let score = prompt("점수를 입력하세요"); // 입력받으면 String임.
+        // 처음 타입이 문자열이여도 다른 타입으로 할당가능 ***
+        score = parseInt(score); // 조건식을 위해 타입변환
+        if(score >= 90){
+            grade = "A";
+        }else if(score >= 80){
+            grade = "B";
+        }else{
+            grade = "F";
+        }
+        document.write(score + "는" + grade + "입니다.<br>");
+
+        
+    </script>
+</body>
+</html>

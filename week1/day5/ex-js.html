@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 개요</title>
+    <!--html 주석-->
+    <script>
+        //자바스크립트 주석
+        /*
+            주석영역.
+            1.개요
+                -웹 페이지에서 사용자로부터 특정 이벤트나 입력값을 받아
+                동적인 처리를 목적으로 고안된 객체 기반의 스크립트 언어.
+
+            2. 특징
+                - HTML문서에 내장
+                - 스크립트 언어
+                - 컴파일이 필요없음
+                - 단순하며 배우기 쉬움
+            3. 하는일
+                - 사용자 입력 및 계산
+                - 웹 페이지 내용 및 객체의 동적 제어
+                - 브라우저 제어
+                - 웹 서버의 제어
+                - 웹 서버의 통신
+                - 웹 애플리케이션 작성
+            4. 사용방법
+                - html에서 <script> / 안에 작성
+                - 엘리먼트 이벤트리스너에 작성
+                - js 파일로 작성
+            5. 기본 문법
+                - 키워드(특별한 의미가 부여된 단어)
+                    break, else, if, case, new, try, null, ...
+                - 식별자(이름을 붙일 때 사용되는 단어)
+                    변수명, 함수명, 속성명, 메소드명
+                    식별자는 키워드를 사용하면 안됨, 숫자 시작하면 안됨, 공백안됨
+                    ,특수 문자는 _$ 만 허용
+                - 관례
+                변수와 함수, 메소드의 이름은 항상 소문자로 시작
+                여러 단어로 이루어진 식별자는 각 단어의 첫글자를 대문자로함.
+        */
+
+        /* 자료형
+            1.Boolean (true/false)        
+        */
+       // 콘솔 출력 (테스트시 사용 배포시에는 삭제!!)
+       console.log("1.Boolean자료형");
+       console.log(52 < 100);
+       console.log(true);
+       // typeof(a) a타입을 리턴하는 함수
+       console.log("52 > 100의 리턴값의 자료형은:" + typeof(52>100));
+       /*
+        2.undefind
+            선언하지 않은 변수 또는 변수를 선언했지만 초기화 하지 않았을때
+            해당 변수의 자료형은 undefined 입니다.
+       */
+      console.log("2.undefined 자료형");
+      let nm;
+      console.log("nm자료형은:" + typeof(a))
+      /*
+        3.null
+        변수에 변수값이 비어있다는 표기를 하기 위한 자료형
+        undefined 형은 못찾을때 null과의 차이는 null은 메모리안에
+        null 이라는 값이 저장된 상태임. typeof 반환값은 object.
+      */
+
+      console.log("3.null 자료형");
+      let no = null;
+      consol.log(no);
+      consol.log("no의 자료형은:"+typeof(no));
+      /*
+       4.Number
+       자바스크립트는 정수와 실수를 구분없이 모두 같은 자료형으로 인식
+      */
+      console.log('4.Number 자료형');
+      let num01 =123;
+      let num02 =123.456;
+      console.log("num01의 자료형은:"+typeof(num01));
+      console.log(num02);
+      console.log("num02의 자료형은:"+typeof(num02));
+      /*
+       5.String
+       */
+      console.log('5.String 자료형');
+      let str = 'hi';
+      console.log(str);
+      console.log("str 의 자료형은:"+ typeof(str));
+      /*
+       6.Object
+       자바스크립트 객체란 여러 속성과 메소드를 하나의 변수에 저장할 수 
+       있도록 해주는 데이터 타입 key:value 형태로 저장
+      */
+     let car = new Object();
+     car.nm = "모닝";
+     car.size = 1400;
+     car.go = function(){
+        console.log("부릉부릉");
+     }
+     console.log(car);
+     console.log("car의 타입은"+typeof(car));
+     /* 7.function
+     */
+     console.log("7.function 자료형");
+     console.log("typeof function:")+ typeof(
+                function fn_test(){
+                    console.log("함수입니다.");
+                }
+     );
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
