@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for문</title>
+</head>
+<body>
+    <h3>for 문으로 10px~35px 크기 텍스트 출력</h3>
+    <hr>
+    <script>
+        for(let i =10; i <= 35; i+=5){
+            document.write("<span ");
+                            // 작은 따옴표 주의
+                            // HTML태그 작성 스타일의 표현으로 작성해주면됨
+            document.write("style='font-size:" + i +
+            "px; color:rgb("+(i*2)+","+(i*3)+","+(i*4)+");' >");
+            
+            document.write(i+"px");
+            document.write("</span><br>");
+        }
+        
+        
+        
+    </script>
+</body>
+</html>

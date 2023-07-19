@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블 만들기 2</title>
+</head>
+<body>
+    <script>
+         let row = prompt("몇 행?");
+         let col = prompt("몇 열?");
+         row1 = parseInt(row);
+         col1 = parseInt(col);
+
+         document.write("<table border='1'>");
+            for(let i=1; i<=row1; i++){
+            
+            document.write("<tr>");
+                for(let j=1; j<=col1; j++){
+                document.write("<td>");
+                document.write(i+"행x"+j+"열");
+                document.write("</td>");
+            } 
+            document.write("</tr>");
+
+        }
+
+         document.write("</table>");
+
+
+
+    </script>
+</body>
+</html>
