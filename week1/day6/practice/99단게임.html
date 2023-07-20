@@ -8,7 +8,10 @@
 <body>
     
     <script>
-
+        let s = 0;  //맞았을때
+        let f = 0; //틀렸을떄
+        for (let i = 0; i < 5; i ++){
+        
         let dan = Math.ceil( Math.random() * 8 )+1;
         let su = Math.ceil( Math.random() * 9 );
         let gu = dan*su;
@@ -18,12 +21,14 @@
         
         
         if (gu === 답) {
-         alert('정답');
+            s++
+        
         } else {
-          alert('...');
+            f++
+          
         }
-
-    
+    }
+    alert (s + "개 맞았음, "+f+" 개 틀렸음.");
             
 
     </script>

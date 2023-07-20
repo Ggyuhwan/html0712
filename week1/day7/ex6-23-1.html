@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eval 응용</title>
+</head>
+<body>
+    <table>
+        <tr><td><button onclick="fn_click(this)">1</button></td>
+            <td><button onclick="fn_click(this)">2</button></td>
+            <td><button onclick="fn_click(this)">3</button></td>
+            <td><button onclick="fn_click(this)">+</button></td>
+        </tr>
+        <tr><td><button onclick="fn_click(this)">4</button></td>
+            <td><button onclick="fn_click(this)">5</button></td>
+            <td><button onclick="fn_click(this)">6</button></td>
+            <td><button onclick="fn_click(this)">-</button></td>
+        </tr>
+        <tr><td><button onclick="fn_click(this)">7</button></td>
+            <td><button onclick="fn_click(this)">8</button></td>
+            <td><button onclick="fn_click(this)">9</button></td>
+            <td><button onclick="fn_click(this)">=</button></td>
+        </tr>
+       
+    </table>
+    <div id="view">
+
+    </div>
+    <script>
+        let divId = document.getElementById("view");
+        function fn_click(obj){
+            let text = obj.innerHTML;
+            console.log(text);
+            
+            if(text == '='){
+                divId.innerHTML+= text + eval(divId.innerHTML);
+                
+            }else{
+                divId.innerHTML += text;
+            }
+        }
+
+    </script>
+</body>
+</html>

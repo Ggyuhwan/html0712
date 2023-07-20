@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나이 계산하기</title>
+    <link rel="stylesheet" href="age.css">
+</head>
+
+<body>
+    <button class="btn" onclick="calc()">나이 계산하기</button>
+    <div id="result" class="show">(결과 값 표시)</div>
+    <script>
+        function calc() {
+            let today = new Date(); // 현재시간
+            
+            let lastday = new Date(1996, 2, 8);
+            
+            let diffDate =today.getTime() - lastday.getTime();
+            let result = Math.ceil(diffDate / (1000 * 60 * 60 * 24* 365 ));
+            document.getElementById("result").innerHTML = "당신의 나이는 " + result + "세 입니다.";
+            // document.write("<h1> 오늘부터 올해 말 까지 남은날짜...</h1>");
+            // document.write("d-day:" + result + "일 남았습니다.");
+
+        }
+    </script>
+</body>
+
+</html>

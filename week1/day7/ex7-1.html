@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>date객체</title>
+<script>
+    // 코어객체 중 Date 생성
+    let today = new Date(); // 현재시간
+    console.log('today:', today);
+    console.log('today.toString():', today.toString());
+    // alert("몇초만 기다렸다 확인을 눌러주세요");
+    // let after = new Date();
+    // console.log(after);
+    document.write("getDate:" + today.getDate() + "<br>");
+    document.write("getDay:" + today.getDay() + "<br>");
+    document.write("getMonth:" + (today.getMonth()+1) + "<br>");
+    document.write("getFullYear:" + today.getFullYear() + "<br>");
+    //UTC (Coordinated Universal Time) 전세계 시간 표준화를 위한 기준시간
+    // 1970년 1월 1일 00:00:00 UTC부터 현재까지의 밀리초를 출력합니다.
+    document.write("getTime:" + today.getTime());
+    document.write("toUTCString:" + today.toUTCString());
+    // 올해 마지막날 까지 남은 날짜 계산
+    let lastday = new Date(2023,11,31) // 2023 12 31
+    document.write("lastday:"+lastday.toString());
+    let diffDate = lastday.getTime() - today.getTime();
+    document.write("차이:"+ diffDate+ "<br>"); //밀리세컨드,초,분,시간
+    let result = Math.ceil(diffDate / ( 1000 * 60 * 60 * 24));
+    document.write("<h1> 오늘부터 올해 말 까지 남은날짜...</h1>");
+    document.write("d-day:" + result + "일 남았습니다.");
+
+    alert("hi기다료");
+    let after = new Date();
+    document.write((after.getTime() - today.getTime()) / 1000 + "초");
+</script>
+
+</head>
+<body>
+    
+</body>
+</html>
