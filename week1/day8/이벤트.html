@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <!--
+        이벤트: 웹 브라우저에서 일어나는 사건(클릭, 브라우저 크기변경, 키보드 클릭.)
+        이벤트 이름: 자바스크립트에서 정의된 이벤트이름(load, click...)
+        이벤트 속성: 특정요소(태그)에 이벤트를 적용할때 사용되는 속성
+        이벤트 리스너(핸들러): 발생한 이벤트에 대처하기 위해 작성된 코드
+        이벤트 객체: 해당 이벤트 시점에 생성된 객체 (x,y좌표,target...)
+        이벤트 디폴트 행동: 요소(태그)가 가지고 있는 기본적인 작업행동 
+                            (a태그 클릭시 디폴트 행동은 href 경로 이동)
+        예시 )
+        window.onload = function(e){
+            이벤트 속성에 함수 할당시 첫번째 매개변수는 해당시점의 이벤트객체임.
+            작업코드~~
+        }
+        window 객체의 onload 속성에 함수를 할당(이벤트 연결한다 라고도 표현)
+        onload(로드를 완료한 시점) 이벤트시 작업됨.
+    -->
+        <script>
+            function fn_get(){
+            let input = document.getElementById("input_id");
+            let div = document.getElementById("div_id");
+            console.log(input.value);
+            div.innerHTML += input.value + "<br>";
+            }
+            function fn_down(e, obj){
+                console.log(e.target.value);
+                // 이벤트 객체에는 이벤트가 일어난 target이있고
+                // 지금의 e.target 은 input ㅈ번째 매개변수로 받은 obj와 동일함.
+                console.log(obj.value); // 지금 obj는 this이고
+            }
+        </script>
+</head>
+<body>
+    <form action="#">
+        <table border="1">
+            <tr><td>id</td>
+                <td><input type="text" id="input_id" onkeydown="fn_down(event)"></td>
+                <!--input type submit은 디폴트 행동이 전송임 주의!-->
+               <td> <input type="button" value="전송" onclick="fn_get()"></td>
+            </tr>
+        </table>
+        <div id="div_id"></div>
+    </form>
+
+</body>
+</html>
