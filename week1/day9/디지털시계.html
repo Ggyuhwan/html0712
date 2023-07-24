@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/time.css">
+    <script>
+        function setClook(){
+            let dateInfo = new Date();
+            console.log(dateInfo);
+            let hour = modifyNum(dateInfo.getHours());
+            let min =modifyNum(dateInfo.getMinutes());
+            let sec = modifyNum(dateInfo.getSeconds());
+
+            let year = modifyNum(dateInfo.getFullYear());
+            let month = modifyNum(dateInfo.getMonth());
+            let date = modifyNum(dateInfo.getDate());
+
+            document.getElementById("time").innerHTML = hour + ":" + min +":"+sec;
+            document.getElementById("date").innerHTML = year+"년"+month+"월"+date+"일";
+        }
+        function modifyNum(time){
+            if(parseInt(time) < 10){
+                return "0"+time;
+            }else{
+                return time;
+            }
+        }
+        //브라우저에서 화면을 다 로드한 뒤 실행
+        window.onload = function(){
+            setClook();
+            setInterval(setClook, 1000); // 1초마다 setClock실행
+        };
+    </script>
+</head>
+<body>
+    <h3 style="color: aliceblue;">메인화면</h3>
+    <div id="time" class="time">
+
+    </div>
+    <div id="date" class="date"></div>
+</body>
+</html>

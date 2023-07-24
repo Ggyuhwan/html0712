@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String 객체 메소드</title>
+    <script>
+     function print(msg){
+        // Array.toString() <-- 배열의 요소를 문자열로 린턴
+        document.write(msg + "<br>");
+    }
+    </script>
+</head>
+<body>
+    <h3>String객체의 메소드</h3>
+    <hr>
+    <script>
+        let a = new String("Boys and Girls");
+        let b = "Boys and Girls";
+        print("a:" + a) ;
+        // 문자열 + 문자열 == 문자열.concat(문자열)
+        print(a.concat("입니다."));
+        print("indexOf('찾고자하는 문자열'):"+a.indexOf("s"));
+        print("찾고자 하는 문자열이 없으면 -1 :" + a.indexOf("M"));
+        print( "slice(5,8): "+a.slice(5, 8));  //5인덱스부터 8
+        print( "substr(5,3): "+a.substr(5,3)); //5부터 3자리
+        let sub = a.split(" "); // split(구분자) 로 짤라서 배열로 담음
+        for(let i = 0; i <sub.length; i++){
+            print("sub["+i+"]:" + sub[i]);
+        }
+        print("replace :"+ a.replace("and", "or"));
+        print("upeer:"+ a.toUpperCase());
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>타이머 함수</title>
+</head>
+<body>
+    <script>
+        // setTimeout(func, millisecond) : 일정 시간 후 함수를 한번 실행
+        // setInterval(func, millisecond) : 일정 시간마다 함수를 반복 실행
+        // clearTimeout(id)               : setTimeout 중 id를 가진 실행을 중지
+        // clearInterval(id)              : setInterval중 id를 가진 실행을 중지
+        setTimeout(function(){
+            alert('2초가 지났습니다');
+        } ,2000);  // 1번만 실행
+        let id = setInterval (fn_write, 1000); //인터벌하게 반복실행
+        function fn_write(){
+            document.write("<h1>1초</h1>");
+        }
+        setTimeout(function(){
+            clearInterval(id);
+        }, 10000); //10초 뒤에 id가진 interval 실행을 중지
+            
+    </script>
+    
+</body>
+</html>

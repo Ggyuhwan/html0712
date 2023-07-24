@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/d-day.css">
+    <title>디데이 계산기</title>
+    <script>
+        let starDate = prompt("처음 만난날을 입력해주세요","2017-08-15");
+        let firstDay = new Date(starDate); // 입력받은 날로 날짜 객체 생성
+        console.log(firstDay);
+
+        let now = new Date(); //오늘의 날짜정보
+        let toNow = now.getTime();
+        let toFirst = firstDay.getTime();
+        let secTime = toNow - toFirst; //처음만난 날과 오늘의 차이(밀리초)
+        // 시간 * 분 * 초 * 밀리초 로 나눔 (일자 계산을 위해)
+        let day = Math.ceil(secTime / (24 * 60 * 60 * 1000));
+
+        window.onload = function(){
+            document.getElementById("accent").innerHTML = day + "일";
+            calcDate(100);
+            calcDate(200);
+            calcDate(365);
+            calcDate(500);
+            
+
+        }
+        function calcDate(days){
+            let future = toFirst + days * (1000 * 60 * 60 * 24) - (1000 * 60 *60 *24);
+            let someDay = new Date (future); // 날짜 데이트 형태로
+            let year = someDay.getFullYear();
+            let month = someDay.getMonth() + 1;
+            let dat = someDay.getDate();
+            document.getElementById("date" + days).innerHTML =
+             year+"년"+month+"월"+dat+"일";
+        }
+
+    </script>
+    
+    <style>
+        ul.li{
+            width: 0px ;
+            margin-left :0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="day1">
+            <h3>우리 만난지</h3>
+            <p id="accent" class="accent"></p>
+        </div>
+        <div class="bar">기념일 계산</div>
+        <div class="day2">
+            <ul>
+                <li class="item-title">100일</li>
+                <li class="item-date" id="date100"></li>
+            </ul>
+            <ul>
+                <li class="item-title">200일 </li>
+                <li class="item-date" id="date200"> </li>
+            </ul>
+            <ul>
+                <li class="item-title">1주년 </li>
+                <li class="item-date" id="date365"> </li>
+            </ul>
+            <ul>
+                <li class="item-title">500일 </li>
+                <li class="item-date" id="date500"> </li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>

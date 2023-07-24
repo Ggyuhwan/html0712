@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 배열 객체의 메소드 활용</title>
+    <script>
+        function print(msg, arr){
+            // Array.toString() <-- 배열의 요소를 문자열로 린턴
+            document.write(msg+arr.toString() + "<br>");
+        }
+    </script>
+</head>
+<body>
+    <h3>Array 메소드</h3>
+    <hr>
+    <script>
+        let a = new Array("황김", "황이", "김", "이");
+        let b = new Array("최", "박");
+        // 배열 선언 및 초기화 a, b동일함.
+        print("배열 a = ",a);
+        print("배열 b = ",b);
+        // concat 배열 결합
+        let c = a.concat(b); // a와 b를 결합하여 c를 만듬
+        print("c = a.concat(b): ",c);
+        print("b =", b);
+        //배열의 요소를 구분자를 넣어 문자열로
+        let d = a.join("||")
+        document.write("d:" + d+"<br>");
+        print("c.reverse() =", c.reverse());
+        print("c=",c);
+        let e = c.slice(1, 2);
+        let f = c.slice(1, 3);
+
+        print("e :", e);
+        print("f :", f);
+        print("c :", c);
+        print("c.sort()", c.sort());
+        print("csort after", c);
+
+    </script>
+    
+</body>
+</html>

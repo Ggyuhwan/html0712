@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>사용자에게 문장을 입력받아 줄임말을 만들어주세요</h3>
+    <!--오늘도 화이팅 > 오화
+        갑자기 분위기 싸함 > 갑분싸
+    -->
+    <script>
+        let msg = prompt("문장을 입력하세요")
+        let user_msg = msg.split(" ");
+        let shotr = "";
+        
+        for(let i=0; i< user_msg.length; i++){
+           short += user_msg[i].slice(0,1);
+        }
+        
+        // 1.입력받은 문자열에서 띄어쓰기를 기준으로 자르기
+        // 2.자른 문자열에서 첫글자 가져오기
+        
+        document.write(msg + "의 줄인말은 : " + short);
+
+       
+    </script>
+</body>
+</html>
