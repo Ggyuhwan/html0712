@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 이벤트</title>
+    <script>
+        let width =1;
+        function fn_down(odj){
+            odj.style.fontStyle = "italic";
+        }
+        function fn_up(odj){
+            odj.style.fontStyle = "normal";
+        }
+        function fn_over(odj){
+            odj.style.borderColor ='violet'
+        }
+        function fn_out(odj){
+            odj.style.borderColor = "lightgray";
+        }
+        function fn_wheel(e,odj){
+            if(e.wheelDelta < 0){ //휠을 아래로 굴리면 -,위로 +
+                width--;
+            }else{
+                width++;
+            }
+            odj.style.borderColor = 'ridge';
+            odj.style.borderWidth = width + 'px'
+        }
+    </script>
+</head>
+<body>
+    <h3>이벤트 텍스트에 마우스 이벤트를 적용해보세요</h3>
+    <hr>
+    마우스 관련<span onmousedown="fn_down(this)" onmouseup="fn_up(this)"
+    onmouseout="fn_out(this)" onmouseover="fn_over(this)"
+   onmousewheel="fn_wheel(event, this)"
+    style="display: inline-block;">이벤트</span>가 발생합니다
+</body>
+</html>

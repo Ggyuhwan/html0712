@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 디폴트 행동취소</title>
+    <script>
+        function query(){
+            let ret = confirm("네이버로 정말 이동 ??");
+            return ret;
+        }
+    </script>
+</head>
+<body>
+    <h3>이벤트 디폴트 행동 취소</h3>
+    <hr>                             <!--디폴트 취소 방법1. return false()-->
+    <a href="http://www.naver.com" onclick="return query()">네이버 이동</a>
+    <form action="">
+        <input type="checkbox">test1(체크됨)<br>
+                                        <!--디폴트 취소 방법2. preventDefault()--> 
+        <input type="checkbox" onclick="event.preventDefault()">test2(체크안됨)<br>
+    </form>
+</body>
+</html>

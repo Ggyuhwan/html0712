@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 객체의 기본프로퍼티</title>
+    <script>
+        function fn_msg(e){
+            let text = "type:"+e.type + "<br>"
+            +"target:"+e.target + "<br>"
+            +"currentTarget:"+e.currentTarget + "<br>"
+            +"defaultPreventesd:"+ e.defaultPreventesd;
+            document.getElementById("id_p").innerHTML = text;
+        }
+
+    </script>
+</head>
+<body>
+    <h3> 버튼을 클릭하면 이벤트 객체 출력</h3>
+    <hr>
+    <p id="id_p">버튼을 클릭하세요</p>
+    <button onclick="fn_msg(event)">버튼</button>
+</body>
+</html>

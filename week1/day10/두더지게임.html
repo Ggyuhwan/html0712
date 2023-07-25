@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>두더지 게임</title>
+    <style> .gameboard{width: 600px; height: 600px; position: relative;}
+            .mole{width: 100px;height: 100px;
+            position: absolute; display: none;}
+            .mole:hover{cursor: pointer;}
+            .mole:active{opacity: 0.5;}
+
+    </style>
+</head>
+<body>
+    <h1>점수 : <span id="score">0</span></h1>
+    <h1>남은시간 : <span id="time">30</span></h1>
+    <div class="game-board">
+        <img src="../day9/images/두더지.PNG" class="mole" id="mole" alt="">
+    </div>
+    <script src="./js/game.js"></script>
+</body>
+</html>

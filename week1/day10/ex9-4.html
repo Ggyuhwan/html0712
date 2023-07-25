@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 리스너 함수등록방법</title>
+    <script>
+        let p;
+        function init(){
+            p = document.getElementById("id_p");
+            // 2.프로퍼티에 함수등록
+            p.onmouseover = function(){
+                this.style.backgroundColor = "orchid";
+            };
+            // 3.addEventListener 메소드 사용
+            p.addEventListener("mouseout", function(){
+                this.style.backgroundColor = "white";
+            });
+        }
+    </script>
+</head>
+<!-- 1.태그에 이벤트리스너에 직접 함수사용-->
+<body onload="init()">
+    <h3>익명 함수로 이벤트 리스너 작성</h3>
+    <hr>
+    <p id="id_p">마우스를 올리면 orchid 색으로 변경</p>
+</body>
+</html>
