@@ -8,7 +8,8 @@
        
         div { display: flex; flex-direction: column;
         justify-content: center; align-items: center;
-    height: 100vh; text-align: center;}
+        height: 100vh; text-align: center;}
+        strong { color: blue;}
     </style>
 </head>
 <body>
@@ -16,7 +17,8 @@
     <h1>ClassMate</h1>
     <h2 id="array-content" onmouseover="fn_stop()"
                             onmouseout="fn_move()"></h2>
-    <button id="stop">랜덤 선택</button>
+    <button id="stop" onclick="fn_select()">랜덤 선택</button>
+    
     <h2 id="result"></h2>
     </div>
     <script>
@@ -36,13 +38,33 @@
             last=text.substr(1);
             obj.innerText = last + first;
         }
-        let move = setInterval(moveInterval,200);
+        let move = setInterval(moveInterval,100);
         function fn_stop(){
             clearInterval(move);
         }
         function fn_move(){
             move = setInterval(moveInterval, 200);
         }
+        function fn_select(){
+            fn_stop(); //멈춤
+            //학생 추첨을 위한 랜덤값 생성
+            let randomIdx = Math.floor(Math.random()*classmate.length);
+            //해당 인덱스의 학생이름
+            let randomItem = classmate[randomIdx];
+            console.log(randomItem);
+            let obj = document.getElementById("array-content");
+            obj.onmouseout = "";
+            obj.onmouseover = "";
+
+            let text = obj.innerText;
+            let text_idx = text.indexOf(randomItem);
+            let first = text.slice(0, text_idx);
+            let last = text.slice(text_idx+3);
+            let inputText = "<strong>" + randomItem + "</strong>";
+            obj.innerHTML = first + inputText + last;
+            document.getElementById("result").innerHTML = "당첨자는:"+randomItem;
+        }
+      
         
     </script>
 </body>

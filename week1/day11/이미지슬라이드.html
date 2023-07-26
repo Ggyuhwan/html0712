@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼을 클릭하면 이미지가 바뀌는....</title>
+    <style>
+        #container{ width: 60%; 
+        margin: 20px auto; text-align: center; }
+        img {width: 60%;height: 60%;}
+        p {background-color: black;color: aliceblue;}
+        strong{color: yellow;}
+        button {position: relative; font-size: 50px; bottom: 450px;}
+    </style>
+    <script>
+        let files = ["./img/1.Png","./img/2.Png","./img/3.Png"]
+        let idx = 0;
+        let imgs = [];
+        for(let i = 0; i <files.length; i++){
+            imgs[i] = new Image();
+            imgs[i].src = files[i];
+        }
+        let next = 0;
+        window.onload = function(){
+            let obj = document.getElementById("img_id");
+        }
+       
+        function fn_left(){
+            let obj = document.getElementById("img_id");
+            if(idx ==0){
+                idx = imgs.length -1;
+            }else{
+                idx --;
+            }
+            
+            obj.src=imgs[idx].src;
+            // 작아지게(0 까지 작아졌다면 이미지의 마지막 인덱스로)
+        }
+        function fn_right(){
+            let obj = document.getElementById("img_id");
+            if(idx == imgs.length -1){
+                idx = 0;
+            }else{
+                idx++;
+            }
+            
+            obj.src=imgs[idx].src;
+            // 커지게 (이미지의 최대 수량까지 증가했다면 -> 0으로 )
+        }
+    </script>
+</head>
+<body>
+    <div id="container"></div>
+        <h1></h1>
+        <p>원하는 무엇이든 될 수 있는 <strong>'바비랜드'에서 살아가던 '바비'</strong>
+            가 현실 세계와 이어진 포털의 균열을 발견하게 되고, 이를 해결하기 위해 '켄'과 
+            예기치 못한 여정을 떠나면서 펼쳐지는 이야기</p>
+        <p></p>
+        <div>
+            <button id="left" onclick="fn_left()" >&lt;</button>
+            <img src="./img/1.Png", id="img_id" alt="">
+            <button id="right" onclick="fn_right()">&gt;</button>
+        </div>
+</body>
+</html>

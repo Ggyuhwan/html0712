@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 이벤트 객체의 프로퍼티</title>
+    <style>
+        div{background-color: skyblue; width: 250px;}
+    </style>
+</head>
+<body>
+    <h3>onmousemove</h3>
+    <hr>
+    이미지 위에 마우스를 움직일때 onmousemove 리스너가 실행됨.
+    <img src="/day11/img/수박.jpg" onmousemove="fn_where(event)" alt ="">
+    <div id="id_div"></div>
+    <script>
+        document.oncontextmenu = function(){
+            alert("불펌 노노");
+            return false;
+        }
+        let div = document.getElementById("id_div");
+        function fn_where(e){
+            let text = "버튼=" + e.button + "<br>";
+            // 전체 스크린( 모니터 화면)기준
+            text +="(screenX, screenY)="+e.screenX + "," + e.screenY + "<br>";
+            // 뷰포트(브라우저 화면에 보이는부분) 기준 , 페이지 줄이면 영향 받음(스크롤)
+            text +="(clientX, clientY)="+e.clientX + "," + e.clientY + "<br>";
+            // offsetX 이벤트 발생요소 기준으로 좌표
+            text +="(offsetX, offsetY)="+e.offsetX + "," + e.offsetY + "<br>";
+            // x,y 웹 페이지 전체를 기준으로 (왼쪽 상단이 0,0)
+            text +="(X,Y)="+e.x + "," + e.y + "<br";
+            div.innerHTML = text;
+           
+
+        }
+    </script>
+</body>
+</html>
