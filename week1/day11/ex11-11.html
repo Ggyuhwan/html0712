@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그림판 1</title>
+</head>
+<body onload="init()">
+    <h3>마우스를 누른 채 드래깅하여 그림을 그리세요</h3>
+    <hr>
+    <canvas id="myCanvas" width="400px" height="300px"
+    style="background-color: aliceblue;">
+    </canvas>
+    <div>
+        <table>
+            <tr>
+                <td>컬러</td>
+                <td><input  id="p_color" type="color" onchange="fn_change(this,event)"></td>
+            </tr>
+            <tr>
+                <td>사이즈</td>
+                <td><input id="p_size" type="range"
+                    min="1" max="30" value="1" onchange="fn_line(this,event)"></td>
+            </tr>
+            <tr>
+                <td><label for="">붓 : </label>
+                    <input type="radio" name="tool" value="P" checked>
+                    <label for="">지우개:</label>
+                    <input type="radio" name="tool" value="E"> 
+                </td>
+                <td><button onclick="fn_clear()">전체삭제</button></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+<script>
+    let canvas,context;
+    let startX = 0, startY= 0;
+    let dragging = false;
+    let tools = 'p'
+    function init(){
+        canvas = document.getElementById('myCanvas');
+        context = canvas.getContext('2d');
+        context.lineWidth =2;
+        context.lineCap = 
+        context.strokeStyle = 'black';
+        canvas.addEventListener('mousemove', move);
+        canvas.addEventListener('mousedown', down);
+        canvas.addEventListener('mouseup',up);
+        canvas.addEventListener('mouseout',out);
+    }
+
+    function down(e){
+        startX = e.offsetX;
+        startY = e.offsetY;
+        dragging = true;
+    }
+    function up(e){
+        dragging = false;
+    }
+    function out(e){
+        dragging = false;
+    }
+    function draw(curX, curY){
+        context.beginPath();
+        context.moveTo(startX,startY);
+        context.lineTo(curX,curY);
+        context.stroke();
+    }
+    function move(e){
+        if(!dragging){
+            return;
+        }
+        let curX = e.offsetX;
+        let curY = e.offsetY;
+        draw(curX,curY);
+        startX = curX;
+        startY = curY;
+    }
+    function fn_change(obj, e){
+        console.log(e)
+        console.log(obj);
+        if(obj.id == 'p_color'){
+            context.strokeStyle = obj.value;
+        }
+        
+        }
+    
+    function fn_line(obj,e){
+        console.log(e);
+        console.log(obj);
+        if(obj.id == 'p_size'){
+            context.lineWidth = obj.value;
+        }else if (obj.id == 'p_size'){
+            context.lineWidth = obj.value;
+    }else if(obj.name == 'tool'){
+        tools = obj.value;
+            console.log(obj.value);
+    }
+    }
+    function fn_clear(){
+        context.clearRect(0,0, canvas.width, canvas.height);
+    }
+
+
+
+</script>
+</html>

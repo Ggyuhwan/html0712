@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼을 누르면 그림을 그려줘요</title>
+    <style>
+        body { margin: 0; left: 0; background-color: lightblue;}
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="420px" height="420px"
+    style="background-color: white;margin: 20px;"></canvas>
+    <button onclick="fn_draw_board()">그려!</button>
+    <button onclick="fn_rect()">사각형</button>
+    <script>
+        let bw = 400;
+        let bh = 400;
+        let p = 10;
+        let canvas = document.getElementById("myCanvas");
+        let context = canvas.getContext('2d');
+        let arr = [];
+        function fn_draw_board(){
+            //가로 10줄
+            // (x, y) 0, 0
+            // (x, y) 400, 
+       
+        
+
+            for (let i = 0; i<=bw; i+=40){
+                context.moveTo(p, i + p+0.5);
+                context.lineTo(p+bw, i + p+0.5);   
+                arr.push( i + p + 0.5);  
+        }
+        for (let i = 0; i<=bh; i+=40){
+                context.moveTo(i+p,  + p);
+                context.lineTo(i+ p , bh + p);     
+        }
+        context.strokeStyle = 'block';
+        context.stroke();
+    }
+    function fn_rect(){
+        context.beginPath();
+        context.fillStyle = 'violet';
+        context.rect(90, 90,40 , 40);
+        context.fill();
+    }
+    canvas.addEventListener('click',function(e){
+        let eX =0;
+        let eY = 0;
+        console.log("x축"+e.offsetX+", y축"+e.offsetY);
+        
+        eX = e.offsetX;
+        eY = e.offsetY;
+        // x 클릭위치가 배열에서 어디 사이에 있는지
+        // y 클릭위치가 배열에서 어디 사이에 있는지
+        // ex x : 30 <-- 클릭위치 일때는
+        // 배열의[0], 배열의[1] 사이에 위치함
+        // 그럼 배열의[0] 위치의 값을 갔도록 ex가
+
+        // 조건 클릭 x가
+        //배열의[i] 크거나 같고 i+1 보다 작을때
+        for(let i =0; i < arr.length; i++){
+
+            if(arr[i] <= e.offsetX && e.offsetX <arr[i+1]){
+                eX =arr[i];
+            }
+            if(arr[i] <= e.offsetY && e.offsetY <arr[i+1]){
+                eY =arr[i];
+        }
+    }
+        context.beginPath();
+        context.fillStyle = 'violet';
+        context.rect(eX,eY,40,40);
+        context.fill();
+        
+ } );
+  
+        
+
+
+    </script>
+    
+</body>
+</html>

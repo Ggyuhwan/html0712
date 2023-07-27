@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 에디터</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500px" height="100px"
+    style="background-color: beige;"></canvas>
+    <input type="text" id="input_id"
+    size="30" placeholder="입력하세요" onkeyup="fn_get(this.value)">
+    <script>
+        let canvas = document.getElementById("myCanvas");
+        let context = canvas.getContext("2d");
+        context.font = '50px forte';
+        context.strokeStyle = 'magenta';
+        context.lineWidth = 1;
+        context.textAlign = 'left';
+        function fn_get(text){
+            //사이즈 만큼 지우기 (지금은 캔버스 크기 만큼이여서 전체 삭제)
+            context.clearRect(0,0, canvas.width, canvas.height);
+            context.strokeText(text, 40, 80);
+        }
+    </script>
+
+
+</body>
+</html>
