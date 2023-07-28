@@ -20,13 +20,13 @@
             <tr>
                 <td>사이즈</td>
                 <td><input id="p_size" type="range"
-                    min="1" max="30" value="1" onchange="fn_line(this,event)"></td>
+                    min="1" max="30" value="1" onchange="fn_change(this,event)"></td>
             </tr>
             <tr>
                 <td><label for="">붓 : </label>
-                    <input type="radio" name="tool" value="P" checked>
+                    <input type="radio" name="tool" value="P"  onchange="fn_change(this,event)" checked>
                     <label for="">지우개:</label>
-                    <input type="radio" name="tool" value="E"> 
+                    <input type="radio" name="tool" value="E" onchange="fn_change(this,event)"> 
                 </td>
                 <td><button onclick="fn_clear()">전체삭제</button></td>
             </tr>
@@ -55,6 +55,9 @@
         startX = e.offsetX;
         startY = e.offsetY;
         dragging = true;
+        if(tools == 'E'){
+            context.clearRect(curX,curY,size,size);
+        }
     }
     function up(e){
         dragging = false;
@@ -63,10 +66,15 @@
         dragging = false;
     }
     function draw(curX, curY){
+       if(tools == 'P'){
         context.beginPath();
         context.moveTo(startX,startY);
         context.lineTo(curX,curY);
         context.stroke();
+    }else{
+        context.clearRect(curX,curY,size,size);
+    }
+       
     }
     function move(e){
         if(!dragging){
@@ -83,6 +91,16 @@
         console.log(obj);
         if(obj.id == 'p_color'){
             context.strokeStyle = obj.value;
+        }else if(obj.id == 'p_size'){
+            context.lineWidth = obj.value;
+            size = obj.value;
+        }else if(obj.name == 'tool'){
+            tools = obj.value;
+            if(tools == 'E'){
+                canvas.style.cursor = 'pointer';
+            }else{
+                canvas.style.cursor = '';
+            }
         }
         
         }
@@ -101,6 +119,9 @@
     }
     function fn_clear(){
         context.clearRect(0,0, canvas.width, canvas.height);
+    }
+    function fn_remove(){
+        
     }
 
 

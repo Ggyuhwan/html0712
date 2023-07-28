@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서의 동적 구성</title>
+    <script>
+        function createDiv(){
+            let obj = document.getElementById("body_id");
+            //엘리먼트 생성
+            let newDiv = document.createElement('div');
+            newDiv.innerHTML = '새로 생성 되었음!!'; // 여러 속성을 설정할 수 있음.
+            newDiv.setAttribute("class", "myDiv");
+            //버튼을 만들어서 newDiv 에 append
+            //이 버튼의 클릭이벤트는 -> 조상을 찾아서 부모를 삭제(div가 삭제되도록)
+
+            newDiv.style.backgroundColor = "yellow";// 스타일도 동적으로 적용가능
+            newDiv.onclick = function (){
+                // 클릭 이벤트가 일어난 (this)의 부모 엘리먼트 선택
+                let del_obj_parent = this.parentElement;
+                del_obj_parent.removeChild(this); // 부모요소에서 자신 삭제
+            }
+            let btn = document.createElement('button');
+            btn.innerHTML = 'xxxxxxxxx';
+            btn.onclick = function(){
+                let body = this.parentElement.parentElement;
+                let parent_div = this.parentElement;
+                body.removeChild(parent_div);
+            }
+            newDiv.appendChild(btn)
+            obj.appendChild(newDiv); //부모의 하위요소로 append
+            
+            
+            // insertBefore 부모의 하위 엘리먼트의 0번째에 삽입
+            // appendChild 부모의 하위 엘리먼트의 마지막에 삽입
+            // 엘리먼트.parentElement 해당엘리먼트의 부모요소
+            // 엘리먼트.parentElement.parentElement 해당엘리먼트의 부모부모 요소(조상)
+        }
+    </script>
+</head>
+<body id="body_id">
+    <h3>객체를 동적으로 생성, 삽입, 삭제하는 예제</h3>
+    <p> DOM 트리에 동적으로 객체를 삽입할 수 있음.</p>
+    <!-- url 링크에서  javascript 이용방법-->
+    <a href="javascript:createDiv()">DIV 생성</a>
+    
+</body>
+</html>

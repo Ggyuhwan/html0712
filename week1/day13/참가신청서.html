@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./nameList.css">
+</head>
+<body>
+    <div id="content"></div>
+    <h1>참가 신청서</h1>
+    <form id="myForm">
+        <input type="text"  id="userName" placeholder="이름을 입력하세요" required>
+        <button type="button" onclick="fn_register()">신청</button>
+       
+
+    </form>
+    <hr>
+    <div id="nameList"></div>
+    <script>
+        document.getElementById("myForm").addEventListener('keypress', function(e){
+            if(e.key == 'Enter'){
+                e.preventDefault(); //디폴트 행동취소
+                fn_register();
+            }
+        });
+        function fn_register(){
+            let userName = document.getElementById("userName");
+            // p태그생성
+            let newP = document.createElement('p');
+            // span 태그로 x 를 만드세요 속성 class 의 값을 del 하면 css가 적용됨.
+            // span 태그를 click 하면 삭제되도록
+            newP.innerHTML = userName.value;
+            userName.value=''; // input 창에 있는 값 제거
+            let nameList = document.getElementById('nameList');
+            //하위 요소의 첫번째에 적용
+            nameList.insertBefore(newP, nameList.childNodes[0]);
+
+            let span = document.getElementById('span');
+            span.className = 'del';
+            span.textContent = 'x';
+            span.addEventListener('click', function(){
+                nameList.removeChild(newP);
+            });
+            newP.appendChild(span);
+          
+        
+    }
+       
+   
+           
+    </script>
+    
+</body>
+</html>
