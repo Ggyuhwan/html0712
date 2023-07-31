@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input checkbox</title>
+</head>
+<body>
+    <div>
+        <h3>취미를 선택하세요</h3>
+        <span id="span_id">
+            <label for="">전체</label><input type="checkbox" onchange="fn_all(this)">
+        </span>
+    </div>
+<div>
+    <label for="">독서</label><input type="checkbox" name="hobby" value="read">
+    <label for="">운동</label><input type="checkbox" name="hobby" value="sports">
+    <label for="game">게임</label><input type="checkbox" name="hobby" value="game">
+    <label for="cook">요리</label><input type="checkbox" id="cook" name="hobby" value="cook">
+    <input type="button" value="확인" onclick="fn_check()"> 
+
+</div>
+<script>
+    function fn_check(){
+        let objs = document.getElementsByName('hobby');
+        let msg = "당신의 취미는 ";
+        for(let i =0; i < objs.length ; i++){
+            if(objs[i].checked){
+                msg += objs[i].value + ":" + objs[i].previousSibling.innerHTML + " ";
+            }
+        }
+        alert(msg + "입니다.");
+    }
+    function fn_all(obj){
+        // obj의 chrcked값이 true 이면 -> 전체 hobby의 checked를 true로
+        //                   false 이면 -> 전체 hobby의 checked를 false로
+        // 1. obj의 checked 상태값 가져오기
+        //console.log(obj.checked);
+        let flag = obj.checked;
+        // 2. hobby 전제 엘리먼트 가져오기
+        //  - 가져온 만큼(for문)
+        //    - hobby각각의 checked 값을 1.의 상태값으로 할당. 
+        let arr = document.getElementsByName('hobby');
+        for(let i = 0; i< arr.length; i++){
+            arr[i].checked = flag;
+        }
+    }
+</script>
+</body>
+</html>

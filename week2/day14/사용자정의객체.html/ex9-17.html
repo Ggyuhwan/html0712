@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input 의 radio</title>
+    <script>
+        function fn_checked(){
+            let found = null;
+            let citys = document.getElementsByName("city");
+            for(let i = 0; i < citys.length; i++){
+                if(citys[i].checked == true){
+                    found = citys[i];
+                }
+            }
+            if(found != null){
+                alert(found.value+" 이 선택됨");
+            }else{
+                alert("선택된게 없음.")
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>버튼을 클릭하면 선택된 라디오 버튼을 출력합니다.</h3>
+    <hr>
+    <form action="#">
+        <!-- radio 버튼은 동일 name 에서 1개만 선택가능-->
+        <input type="radio" name="city" value="seoul" checked>서울
+        <input type="radio" name="city" value="busan" checked>부산
+        <input type="radio" name="city" value="daejeon" checked>대전<br>
+        <input type="radio" name="gungu" value="sugo" checked>서구
+        <input type="radio" name="gungu" value="donggo" checked>동구
+
+        <input type="button" value="선택값 가져오기" onclick="fn_checked()">
+        <input type="submit" value="전송">
+
+    </form>
+</body>
+</html>

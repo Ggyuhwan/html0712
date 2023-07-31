@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { margin: 0 auto;
+        }
+        #container{
+            width: 100vw;  /*vw(viewport width), vh(viewport height) 뷰포트의 길이에 영향을 받습니다.*/
+            height: 100vh;
+        }
+        #center {  
+                   width:300px;
+                   height:300px;
+                   margin:0 auto;
+                }
+        fieldset{ width: 230px;  
+                  text-align: center;}
+        p{ margin-left: 10px;}
+    </style>
+    <title>ATM기</title>
+</head>
+<body>
+    <div id="container">
+        <div id = "center">
+            <img src="./img/ATM.JPG" alt="">
+            <form action="#">
+                <p><label for="">계좌:</label><input type="text" id="acc"></p>
+                <p><label for="">비번:</label><input type="password" id="pw"></p>
+                <p><label for="">금액:</label><input type="text" id="amount"></p>
+                <fieldset id="func">
+                    <legend>ATM 기능</legend>
+                    <input type="button" value="입금" onclick="fn_deposit()">
+                    <input type="button" value="출금" onclick="fn_withdrow()">
+                    <button type="button" onclick="fn_inquiry()">조회</button>
+                   
+                    <input type="reset" value="종료" onclick="fn_er()">
+                    </fieldset>
+                    
+                <fieldset id="content">
+                    <legend>내용</legend>
+            </fieldset>
+        </form>
+        </div>
+    </div>
+    <div id="container">
+
+    </div>
+    <script>
+        let accountArr = [];
+        let content = document.getElementById("content");
+        let current_idx;
+        let obj_user01= {account:"12345"
+                        ,pw : "1234"
+                        ,user : "팽수"
+                        ,balance : 10000
+        };
+        accountArr[0] = obj_user01;
+        // 객체 key 는 식별자로 인식하기 떄문에 "" <-- 사용하지 않아도됨
+        //              하지만 중간에 띄어쓰기가 들어가야 된다면 "" 로 표기
+        accountArr[1] = {"account":"67890"
+                        ,"pw" : "1234"
+                        ,"user" : "길동"
+                        ,"balance" : 20000};
+        console.log(accountArr);
+        function fn_inquiry(){
+            let obj_acc = document.getElementById("acc");
+            let obj_pw = document.getElementById("pw");
+            console.log(obj_acc.value, obj_pw.value);
+            let msg = ""; // 화면 출력내용
+            let user; 
+            for(let idx in accountArr){
+                // 계좌번호 같을때
+                if(accountArr[idx]['account'] == obj_acc.value){
+                    if(accountArr[idx]['pw'] == obj_pw.value){
+                        user = accountArr[idx];
+                        current_idx = idx;
+                    }else{
+                        msg = obj_acc.value + "계좌 비번이 틀렸습니다.";
+                        obj_pw.value = '';
+                        
+                    }
+                }
+                if(msg === ""){
+                    if(user === null || user === undefined){
+                        msg = obj_acc.value + "계좌 정보는 없습니다.";
+                        obj_acc.value = "";
+                        current_idx = null;
+                    }else{
+                        msg = user['user'] + "님 잔액은"+ user['balance'] + "원 입니다.";
+                    }
+                }
+            }
+            let now = new Date();
+                let current_dt = now.getHours() + ":" + now.getMinutes() + ":"+now.getSeconds();
+                let p = document.createElement("p");
+                p.innerHTML = msg + current_dt;
+                content.appendChild(p);
+        }
+                function fn_deposit(){
+                    if(current_idx == null || current_idx == undefined){
+                        alert("조회 부터하세요!!!");
+                        return;
+                    }
+                    let amo = document.getElementById("amount");
+                    if(amo.value != ""){
+                        let balance = parseInt(amo.value);
+                        if(confirm(amo.value + "를 정말 입금하시나요?")){
+                            accountArr[current_idx].balance += (1 * amo.value);
+                            // string * 1 ->> parsInt와 동일한 효과
+                        }
+                        amo.value="";
+                        fn_inquiry();
+                    }else{
+                        alert("얼마를 입금해요!!!?")
+                    }
+
+                }
+                function fn_withdrow(){
+                    if(current_idx == null || current_idx == undefined){
+                        alert ("조회 부터 하세요");
+                        return;
+                    }
+                    let amo = document.getElementById("amount");
+                    if(amo.value != ''){
+                        let balance = parseInt(amo.value);
+                        if(confirm(amo.value + "출금 하시나요?")){
+                            if(accountArr[current_idx].balance >= balance){
+                                accountArr[current_idx].balance -= balance;
+                            }else{
+                                alert("잔액부족!")
+                                return;
+                            }
+                        }
+                    }
+                    fn_inquiry();
+                }
+                function fn_er(){
+                    current_idx = null;
+                    for(let v of content.children){
+                        console.log(v);
+                        // p태그만 삭제
+                        if(v.tagName == "p" || v.tagName == "P"){
+                            content.removeChild(v);
+                            console.log(v);
+                        }
+                    }
+                }
+
+            
+
+    </script>
+</body>
+</html>
