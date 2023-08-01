@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window.open</title>
+    <script>
+        let newWin = null;
+        function load(url){
+            newWin =  window.open(url,'myWin', 'left=10, top=10, width=500, height=500');
+        }
+        function fn_close(){
+                if(newWin == null || newWin.closed){
+                    return; // 팝업이 없을경우
+                }else{
+                    //window.close();
+                    newWin.close(); //팝업이 있을경우 닫기
+                }
+        }
+    </script>
+</head>
+<body>
+    <h3>window open으로 윈도우 열기</h3>
+    <hr>
+    <a href="javascript:load('http://www.google.com')">구글</a>
+    <a href="javascript:load('http://www.naver.com')">네이버</a>
+    <a href="javascript:close()">팝업 닫기</a>
+</body>
+</html>

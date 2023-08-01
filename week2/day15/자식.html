@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>child window</title>
+    <script>
+        function fn_send(){
+            opener.document.getE1ementById('parent_input').value =
+                document.getElementById('send_input').value;
+        }
+        function fn_close(){
+            opener.close(); // 부모창 닫기
+            window.close(); // 해당 윈도우 닫기
+        }
+
+    </script>
+</head>
+<body>
+    부모에서 전달 : <input type="text" id="child_input" readonly><br>
+    부모로 전달내용 : <input type="text" id="send_input"><br>
+    <input type="button" value="전달!" onclick="fn_send">
+    <input type="button" value="닫기!" onclick="fn_close">
+</body>
+</html>
