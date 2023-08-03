@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>인코딩과 디코딩</h3>
+    <hr>
+    <!--
+        인코딩은 문자를 컴퓨터에 저장하거나 통신에 사용할 목적으로 부호화하는 방법
+        javascript 인코딩 디코딩 함수
+        1.escape() 영문,숫자,일부 (@,*,+,...)특수문자를 제외하고 인코딩함
+            unescape()
+        2.encodeURI()인터넷 주소에 사용되는 일부 특수문자(: ; / = , ? &)제외하고 인코딩
+            decodeURI()
+        3.encodeURIComponent() 알파벳과 숫자를 제외한 모든 문자를 인코딩(UTF-8과 같음)
+            decodeURIComponent()
+    -->
+    <script>
+        let url_1 ="https://search.naver.com/search.naver?query=미래융합교육원";
+        let escape1 = escape(url_1);
+        let encode = encodeURI(url_1);
+        let encodeCom = encodeURIComponent(url_1);
+        document.write("1.escape:" + escape1 + "<br>");
+        document.write("2.encodeURI:" + encode + "<br>");
+        document.write("3.encodeURIComponent:" + encodeCom + "<br>");
+        document.write("디코딩---------------------------------<br>");
+        document.write("1.unescape:" + unescape(escape1) + "<br>");
+        document.write("2.decodeURI:" + decodeURI(encode) + "<br>");
+        document.write("3.decodeURIComponent:" + decodeURIComponent(encodeCom) + "<br>");
+    </script>
+
+</body>
+</html>

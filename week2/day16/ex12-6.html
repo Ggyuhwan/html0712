@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로컬 스토리지</title>
+</head>
+<body>
+    <h3>로컬 스토리지</h3>
+    <hr>
+    item : <input type="text" id="item">
+    cnt : <input type="text" id="cnt">
+    <button id="save" onclick="fn_save()">저장 </button>
+    <button id="search" onclick="fn_search()">검색 </button>
+    <div id="content"></div>
+    <script>
+        function fn_save(){
+            let item = document.getElementById("item");
+            let cnt = document.getElementById("cnt");
+            if(!window.localStorage){
+                alert("로컬 스토리지를 지원하지않음....");
+                return;
+            }
+            // setItem 로컬스토리지에 key : value 형태로 저장
+            localStorage.setItem(item.value, cnt.value);
+            item.value = "";
+            cnt.value = "";
+        }
+        function fn_search(){
+            let item = document.getElementById("item");
+            // getItem 로컬스토리지에서 key 로 value를 가져올 수 있음.
+            let val = localStorage.getItem(item.value);
+            let str = "";
+            if(val == null){
+                str += "없음";
+            }else{
+                str += "key:" +item +"/value:" + val +"<br>";
+            }
+            document.getElementById('content').innerHTML=str;
+        }
+    </script>
+</body>
+</html>

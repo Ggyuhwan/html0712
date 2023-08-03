@@ -18,11 +18,11 @@
     document.write("getFullYear:" + today.getFullYear() + "<br>");
     //UTC (Coordinated Universal Time) 전세계 시간 표준화를 위한 기준시간
     // 1970년 1월 1일 00:00:00 UTC부터 현재까지의 밀리초를 출력합니다.
-    document.write("getTime:" + today.getTime());
-    document.write("toUTCString:" + today.toUTCString());
+    document.write("getTime:" + today.getTime()+"<br>");
+    document.write("toUTCString:" + today.toUTCString()+"<br>");
     // 올해 마지막날 까지 남은 날짜 계산
     let lastday = new Date(2023,11,31) // 2023 12 31
-    document.write("lastday:"+lastday.toString());
+    document.write("lastday:"+lastday.toString()+"<br>");
     let diffDate = lastday.getTime() - today.getTime();
     document.write("차이:"+ diffDate+ "<br>"); //밀리세컨드,초,분,시간
     let result = Math.ceil(diffDate / ( 1000 * 60 * 60 * 24));

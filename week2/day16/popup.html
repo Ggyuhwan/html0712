@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업창</title>
+    <script src="main.js"></script>
+    
+</head>
+<body>
+<!-- 체크 박스 선택후 닫기를 누르면
+    pop=N 로 2분 짜리 쿠키저장
+    체크 박스를 선택하지 않고 누르면
+    pop=Y 로 1년짜리 쿠키 저장
+-->
+    <h3>팝업임</h3>
+    <h4>공지내용</h4>
+    <hr>
+    2분 동안은 다시 안보기 <input type="checkbox" name="ckb">
+    <button id="btn" onclick="fn_check()">닫기</button>
+    <script>
+        function fn_check(){
+            let now = new Date();
+            if(document.getElementsByName('ckb')[0].checked){
+                now.setTime(now.getTime() + (120 * 1000));
+                SetCookie("pop","N",now);
+            }else{
+                now.setTime(now.getTime() + (365 * 24 * 3600 * 1000));
+                SetCookie("pop",'Y',now);
+            }
+            window.close();
+        }
+    </script>
+</body>
+</html>
