@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // JSON (Javascript Object Notion)
+        // 웹상에서 데이터를 손쉽고 가볍게 교류하기 위한 데이터 형태
+        // 최근 많이 사용됨.(저용량)
+        // JSON <---> Object
+        // JSON(문자열) to Object : JSON.parse()
+        let str = '[{"market":"KRW-BTC","trade_date":"20230803","trade_time":"050557","trade_date_kst":"20230803","trade_time_kst":"140557","trade_timestamp":1691039157393,"opening_price":38358000.0000,"high_price":38468000.0000,"low_price":38309000.0000,"trade_price":38330000.0000,"prev_closing_price":38358000.00000000,"change":"FALL","change_price":28000.00000000,"change_rate":0.0007299651,"signed_change_price":-28000.00000000,"signed_change_rate":-0.0007299651,"trade_volume":0.00098563,"acc_trade_price":16684428462.434400000000,"acc_trade_price_24h":88513463635.08694000,"acc_trade_volume":434.77474295,"acc_trade_volume_24h":2298.70362681,"highest_52_week_price":41569000.0000,"highest_52_week_date":"2023-06-30","lowest_52_week_price":20700000.00000000,"lowest_52_week_date":"2022-12-30","timestamp":1691039160042}]';
+        console.log("json 데이터 형식으로 응답받으면 문자열임");
+        console.log(str);
+        let obj = JSON.parse(str);
+        console.log("응답 받은 문자열을 손쉽게 사용하려면 객체로 변환");
+        console.log(obj);
+        // Object to JOSN : JSON.stringify(obj)
+        for(k in obj[0]){
+            console.log(k, obj[0][k]);
+        }
+        // Object to JSON :JSON.stringify(obj) 객체를 (JSON형태)문자열로
+        let req = JSON.stringify(obj);
+        console.log(req);
+    </script>
+</head>
+<body>
+
+    
+</body>
+</html>

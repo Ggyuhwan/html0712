@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let data = '{"name": "팽수", "age" : 10, "hobby":["참치먹기","노래","춤"]}';
+        let data2 = '[{"nm":"비트코인"},{"nm":"도지코인"}]';
+
+        let obj = JSON.parse(data);
+        let obj2 = JSON.parse(data2);
+        console.log(obj);
+        console.log (obj.name);
+        console.log (obj.age);
+        console.log (obj['hobby']);
+        console.log (obj.hobby[0]);
+        console.log (obj.hobby[1]);
+        console.log(obj2[0].nm);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
