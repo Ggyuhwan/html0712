@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#btn').click(function(){
+                $("#apple").animate({left : '100px'});
+            });
+            $('#btn').dblclick(function(){
+                $("#apple").animate({left : '0px'});
+            });
+            $('#fadeIn').click(function(){  
+                //메소드 체이닝
+                $('#banana').slideDown('fast').fadeIn('slow');//천천히 나타남
+            });
+            $('#fadeOut').click(function(){
+                $('#banana').fadeOut('fast'); //빠르게 사라짐
+            });
+            $('#btn2').click(function(){
+                alert($('#apple').attr('src'));
+            });
+            $('#btn3').click(function(){
+                $('#apple').attr('src','./day19/game_2.jpg');
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">animate()</button><br>
+    <button id="btn2">get attr()</button>
+    <button id="btn3">change src</button>
+    <img src="./day19/math_user_3.jpg" id="apple" width="80" height="80"
+    style="position: relative;" alt="">
+    <button id="fadeIn">fadeIn</button>
+    <button id="fadeOut">fadeOut</button>
+    <img src="./day19/game_1.jpg" id="banana" width="80" height="80" 
+    style="position: relative;" alt="">
+
+</body>
+</html>

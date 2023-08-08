@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #menu li.active{ color: red;}
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li id="item1">Item 1</li>
+        <li id="item2">Item 2</li>
+        <li id="item3">Item 3</li>
+        
+    </ul>
+    <script>
+        let menu = document.getElementById('menu');
+        menu.addEventListener('click', function(e){
+            // 모든 메뉴 아이템의 활성화 제거
+            let items = menu.getElementsByTagName('li');
+            for(let i=0; i < items.length; i ++){
+                items[i].classList.remove('active');
+            }
+        },true);//캡쳐 단계
+        
+        menu.addEventListener('click', function(e){
+            // 클릭되어진 엘리먼트가 LI이면 해당 class 에 active 추가
+            if(e.target.tagName === 'LI'){
+                e.target.classList.add('active');
+            }
+        }); //버블단계
+    </script>
+</body>
+</html>

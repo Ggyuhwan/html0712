@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        // jquery는 셀렉터를 기본으로 명시해야하기 때문에
+        // document 가 onload 된 뒤 사용이 가능함
+        // $ or jQuery 식별자는 jquery 객체를 의미함.
+        
+        $(document).ready(function(){
+            // tag selecter
+            $('h2').click(function(){
+                $('this').hide(); // 여기서 this는 click되어진 엘리먼트를 의미함
+            })
+      
+        $('h1').click(function(){
+            $('h2').show();
+        });
+        let i = 0;
+        $('div.out').mouseover(function(){
+            $('p:first').text('mouse over');
+            $('p:last').text(++i);
+        })
+        $('div.out').mouseout(function(){
+            $('p:first').text('mouse out');
+           
+        })
+        $("input").focus(function(){
+            $(this).css("background-color","yellow");
+
+        });
+        $("input").blur(function(){
+            $(this).css("background-color","white");
+        });
+        $('input').keyup(function(){
+            $('#content').text($(this).val());
+            $('#content').text(text + $(this).val())
+            $(this).val('');
+        });
+     
+    });
+    </script>
+</head>
+<body>
+    <h2> h2 입니다.</h2>
+    <h2> h2 입니다.</h2>
+    <h1> h1 입니다.</h1>
+    <div class="out">
+        <p>마우스를 여기로 움직이세요</p>
+        <p>0</p>
+    </div>
+    아이디 :<input type="text">
+    <div id="content"></div>
+    
+
+</body>
+</html>

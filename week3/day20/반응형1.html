@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title></title>
+
+    <style>
+
+        @media screen and (max-width:767px) {
+            #wrap { background-color:#ff0000; color:#ffffff; }
+        }
+
+        @media screen and (min-width:768px) and (max-width:959px) {
+            #wrap { background-color:#00ff00; color:#ffffff; }
+        }
+
+        @media screen and (min-width:960px) {
+            #wrap { background-color:#0000ff; color:#ffffff; }
+        }
+
+        * { margin:0; padding:0; }
+        li { list-style:none; }
+
+        #wrap { width:80%; margin:0 auto; }
+
+        #header { border:1px solid #cccccc; height:100px; }
+        #header > h1 { text-align:center; }
+
+        #nav { border:1px solid #cccccc; }
+        #nav ul { overflow:hidden; }
+        #nav ul li { float:left; padding:5px 30px; text-align:center; height:60px; line-height:60px; border:1px solid #cccccc; }
+
+        #content_wrap { border:1px solid #cccccc; }
+        #content_wrap #content { padding:10px; }
+        #content_wrap #content > h2 { border-bottom:1px solid #cccccc; margin-bottom:10px; }
+
+        #footer { height:100px; line-height:100px; text-align:center; font-size:1.5em; font-weight:bold; margin:0 auto; border:1px solid #cccccc; }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="wrap">
+        <div id="header">
+            <h1>HEADER</h1>
+        </div>
+
+        <div id="nav">
+            <ul>
+                <li>menu1</li>
+                <li>menu2</li>
+                <li>menu3</li>
+                <li>menu4</li>
+            </ul>
+        </div>
+
+        <div id="content_wrap">
+            <div id="content">
+                <h2>애국가</h2>
+                <p>
+                    1절 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세<br />
+					무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세
+				</p>
+				<p>
+					2절 남산 위에 저 소나무 철갑을 두른 듯 바람 서리 불변함음 우리 기상일세<br />
+					무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세
+				</p>
+				<p>
+					3절 가을 하늘 공활한데 높고 구름 없이 밝은 달은 우리 가슴 일편단심일세<br />
+					무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세
+				</p>
+				<p>
+					4절 이 기상과 이 맘으로 충성을 다하여 괴로우나 즐거우나 나라 사랑하세<br />
+					무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세전하세
+                </p>
+            </div>
+        </div>
+
+        <div id="footer">
+            대한민국
+        </div>
+    </div>
+
+</body>
+</html>

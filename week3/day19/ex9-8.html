@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 흐름</title>
+</head>
+<body>
+    <p style="color: blue;">이것은
+    <span style="color: red;" id="span_id">문장입니다.</span>
+</p>
+<form action="#">
+    <input type="text" name="">
+    <input type="button"  value="테스트" id="btn">
+</form>
+<div id="div_id" style="color: green;"></div>
+<script>
+    let div = document.getElementById('div_id');
+    let btn = document.getElementById('btn');
+    document.body.addEventListener('click', capture, true ); // body capture
+    btn.addEventListener('click' , bubble, false); // default false (안써도됨.)
+    document.body.addEventListener('click' , bubble,  ); 
+    function capture(e){
+        let obj = e.currentTarget; // 현재 이벤트를 받은 DOM객체
+        let tagName = obj.tagName;
+        div.innerHTML += "<br> capture 단계:" + tagName + " 태그 " + e.type + "이벤트";
+    }
+     function bubble(e){
+        let obj = e.currentTarget; // 현재 이벤트를 받은 DOM객체
+        let tagName = obj.tagName;
+        div.innerHTML += "<br> bubble 단계:" + tagName + " 태그 " + e.type + "이벤트";
+    }
+</script>
+
+</body>
+</html>

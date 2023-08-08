@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>element 추가/삭제</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#btn1').click(function(){
+                $('#content').append("<b>hello</b>");  // 뒤에 붙이기
+            });
+            $('#btn2').click(function(){
+                $('#content').prepend("<b>hi</b>");    //앞에 붙이기
+            });
+            $('#btn3').click(function(){
+                $('#content').empty();  //비우기
+            })
+            $('#btn4').click(function(){
+                $('#content').remove(); //삭제
+            })
+        });
+    </script>
+</head>
+<body>
+    <div id="content">
+        <p>I would like to say:</p>
+        
+    </div>
+    <button id="btn1">append()</button>
+    <button id="btn2">prepend()</button>
+    <button id="btn3">empty()</button>
+    <button id="btn4">remove()</button>
+   
+</body>
+</html>
