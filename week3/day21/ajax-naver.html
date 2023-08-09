@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+    <title>Document</title>
+    <script>
+    $(document).ready(function(){
+        // 네이버 장소검색
+        let naver_serach = 'https://openapi.naver.com/v1/search/local';
+        const CLIRNT_ID ='ySUlrHYTW1BL1e5n39dL';
+        const SECRET='64Dog6do7v';
+        $("#btn").click(function(){
+            let q = $('#search').val();
+            $.ajax({
+                url : naver_serach
+                ,trpe :'POST'
+                ,data : {'query': q}
+                ,headers : { 'X-Naver-CLient-Id': CLIRNT_ID
+                            , 'X-Naver-CLient-Secret': SECRET}
+                ,success : function(res){
+                    console.log(res);
+                },error(e){
+                    console.log(e);
+                }
+                
+            });
+        });
+    });
+    </script>
+</head>
+<body>
+        <input type="text" id="search">
+        <button id="btn" type="button">검색</button>
+</body>
+</html>

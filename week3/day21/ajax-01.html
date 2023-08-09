@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#btn').click(function(){
+                $.ajax({
+                    url : 'https://api.upbit.com/v1/market/all'
+                    ,dataType : 'json'  // 응답 데이터 타입
+                    ,success: function(res){ // 정상처리시 리턴 data에 담김
+                        console.log(res);
+
+                    },error(e){             // 오류시 error 쪽으로 실행
+                        console.log(e)
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="button" id="btn" value="요청">
+</body>
+</html>
