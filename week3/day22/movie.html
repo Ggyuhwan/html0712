@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            let api_url = 'http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json'
+            const api_key = '7f7314005c9a1bb8ee535cedbd043a27'
+            $("#btn").click(function(){
+                let dt = $('#st').val().replaceAll('-','');
+                alert(dt);
+                $.ajax({
+                    url:api_url
+                    ,type : 'GET'
+                    ,data : {key : api_key
+                    ,targetDt : dt}
+                    ,dataType : 'json'
+                    ,success : function(res){
+                        $('#td').empty();
+                        let arr = res['boxOfficeResult']['dailyBoxOfficeList'];
+                        $('#td').append("<tr><th>순위</th><th>제목</th></tr>");
+                        $.each(arr, function(i,v){
+                            console.log(i,v['movieNm']);
+                           let str = '';
+                           str += '<tr>';
+                           str += '<td>' + v['rank']+'</td>';
+                           str += '<td>' + v['movieNm']+'</td>';
+                           str += '</tr>';
+                           $('#td').append(str);
+                        });
+
+                    },ereror(e){
+                        console.log(e);
+                    }
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <input type="date" name="" id="st">
+    <button id="btn">조회</button>
+    <table id="td">
+
+    </table>
+</body>
+</html>
