@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>환율정보</title>
+    <script>
+        $(document).ready(function(){
+            let exchange_url = 'https://api.exchangerate.host/timeseries';
+            $('#btn').click(function(){
+                let s_dt = $('#s_dt').val();
+                let e_dt = $('#e_dt').val();
+                let base = $('#base').val();
+                console.log(s_dt,e_dt,base);
+                $.ajax({
+                    url:exchange_url
+                    ,type : 'GET'
+                    ,data : {'start_date':s_dt
+                            ,'end_date':e_dt
+                            ,'base': base}
+                ,dataType : 'json'
+                ,success : function(res){
+                    let arr = res['rates'];
+                    console.log(arr);
+                    //응답받은 데이터에서
+                    //날짜를 labels_arr
+                    //KRW금액을 krw_arr 담아주세요!
+                    //JPY금액을 jpy_arr 담아주세요!
+                    let labels_arr = [];
+                    let krw_arr = [];
+                    let jpy_arr = [];
+                    for(let key in arr){
+                        labels_arr.push(key);
+                        krw_arr.push(arr[key]['KRW']);
+                        jpy_arr.push(arr[key]['JPY']);
+                    }
+                    console.log(labels_arr, krw_arr, jpy_arr);
+                   
+                }
+
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <input type="date" name="" id="s_dt">
+    <input type="date" name="" id="e_dt">
+    <select name="" id="base">
+        <option value="USD" selected>달러</option>
+        <option value="EUR">유로</option>
+    </select>
+    <button id="btn">환율조회</button>
+    <h3>환율 그래프</h3>
+    <div>
+        <canvas id="myCanvas" width="1000" height="400"></canvas>
+    </div>
+</body>
+</html>

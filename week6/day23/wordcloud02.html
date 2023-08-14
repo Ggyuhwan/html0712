@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.1.0/wordcloud2.js"> </script>
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="1000" height="800"></canvas>
+    <script>
+        let str = "JAVA JAVA JSP jsp C C HTML C JAVA JAVACRIPT";
+        function countWords(words){
+            let counts = {};
+            let arr = words.split(' ');
+            for(let word of arr){
+                word = word.toLowerCase().trim();
+                //비어있거나 1글자 이상만 카운팅
+                if(word !== '' && word.length > 1){
+                    counts[word] = counts[word] ? counts[word] + 10:10;
+                }
+            }
+            return counts;
+        }
+        let obj = countWords(str);
+        console.log(obj);
+        let wordCloudArr = [];
+        for(let word in obj){
+            wordCloudArr.push([word,obj[word]]);
+        }
+        console.log(wordCloudArr);
+        WordCloud(document.getElementById('myCanvas'),{
+            list:wordCloudArr
+            ,backgroundColor:'black'
+            ,fontSize : {from : 50, to : 100}
+        });
+    </script>
+</body>
+</html>

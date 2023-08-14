@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <canvas id="myChart"></canvas>
+      </div>
+      
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <script>
+        function fn_random_color(){
+            let rgb1 = Math.floor(Math.random()*(255+1));
+            let rgb2 = Math.floor(Math.random()*(255+1));
+            let rgb3 = Math.floor(Math.random()*(255+1));
+            let str = 'rgba('+rgb1+','+rgb2+','+rgb3+',0.3)';
+            return str;
+        }
+        let myColor = [];
+        for(let i = 0; i <6; i++){
+            myColor.push(fn_random_color());
+        }
+        console.log(myColor);
+
+        const ctx = document.getElementById('myChart');
+        let configs = {
+          type: 'bar', // 차트의 종류 bar, line, pie, ....
+          data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+              label: '# of Votes',          //데이터 설명
+              data: [12, 19, 3, 5, 2, 3],   //데이터 
+              backgroundColor: myColor,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        }
+         let myChart = new Chart(ctx, configs);
+         function fn_change(){
+            console.log(configs);
+            configs.data.datasets[0].data = [50,2,10,4,20,40];
+            let random_color = [];
+            for(let i = 0; i < configs.data.datasets[0].data.length; i++){
+                random_color.push(fn_random_color());
+            }
+            configs.data.datasets[0].backgroundColor = random_color;
+            myChart.update(); // 데이터 변경후 update()함수 호출 -> 차트데이터변경됨.
+         }
+      </script>
+      <button id="btn" onclick="fn_change()">변경!</button>
+</body>
+</html>

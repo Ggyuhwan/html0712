@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="imageFile" accept="image/*">
+    <img src="" style="max-width: 300px;" id="preview" alt="">
+    
+    <script>
+        document.getElementById('imageFile').addEventListener('change',function(e){
+            let file = e.target.files[0]; // 선택된 파일
+            if(file && file.type.match('image.*')){
+                let reader = new FileReader();
+                reader.onload = function(event){
+                    console.log(event.target.result);
+                    document.getElementById('preview').src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            }else{
+                alert("유효한 이미지 파일을 선택하세요!!!");
+            }
+        });
+    </script>
+    
+</body>
+</html>
