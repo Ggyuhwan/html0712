@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="css.css">
+
+</head>
+<script>
+  
+    function pop(){
+        window.location.href = "grid.html"  ;  
+    }
+    function userjoin(){
+        window.location.href = "join.html"   ;  
+    }
+</script>
+<body>
+    <div id="title1">Water Dog</div> 
+    <div class="login-wrapper">  
+        <h2 style="margin-top: 50px;
+                  margin-bottom: 50px;
+                  text-align: center;
+                  font-size: 30px;">Login</h2>
+        <form method="post" action="index.html" id="login-form">
+            <input type="text" name="userName" placeholder="Email">
+            <input type="password" name="userPassword" placeholder="Password">
+            <label for="remember-check">
+                <input type="checkbox" id="remember-check">아이디 저장하기
+            </label>
+            <input class="login_btn" type="button" value="Login" onclick="pop()" src="http://192.168.0.14:5500/new/water/grid.html" >
+            <input class="login_btn" type="button" value="회원가입" onclick="userjoin()"  >
+        </form>
+    </div>
+</body>
+</html>

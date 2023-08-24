@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>line chart</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        $(document).ready(function(){
+           
+            let ctx = document.getElementById('myChart');
+            let labels_arr = [];
+            let krw_arr = [];
+            let jpy_arr = [];
+            let configs = {
+                type: 'line'
+                ,data: {
+                    labels :labels_arr
+                    ,datasets : [
+                        {label : 'KRW'
+                        ,data: krw_arr
+                            }
+                        ,{label : 'JPY'
+                        ,data : jpy_arr
+                        }
+                   
+                    ]
+                }
+                ,options: {
+                    elments : {
+                        line : {
+                            tension : 0.1 // 수치가 클수록 부드럽게 그려줌
+                        }
+                    }
+                }
+            };
+            console.log(configs);
+            let exchange_url = 'https://api.exchangerate.host/timeseries';
+            let myChart = new Chart(ctx, configs);
+            $('#btn').click(function(){
+                
+                configs.data.labels= ['2023-01-01','2023-01-02','2023-01-03'];
+                configs.data.datasets[0].data = [1000, 2000, 3000];
+                configs.data.datasets[1].data = [100, 2000, 1000];
+            myChart.update();
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+    <h3>한국 환율 추세(라인차트)</h3>
+    <div style="width: 600px; height: 400px;">
+    <canvas id="myChart" width="600px" height="300px"></canvas>
+</div>
+<button id="btn">조회</button>
+    
+</body>
+</html>

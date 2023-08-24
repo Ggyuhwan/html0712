@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        * {
+            background-color: #212529;
+        }
+        body{
+            background-color: #212529;
+        }
+        h1 {
+            text-align: center;
+            font-size: 70px;
+            color: #F8F8F8;
+            background-color: #212529;
+            margin-top: 50px;
+           }
+        #grid1{
+            color: #F8F8F8;
+        }
+    </style>
+    <script>
+      
+     let str = document.getElementById('search')
+    </script>
+</head>
+
+<body>
+    <h1>Hello, world!</h1>
+    <div class="container text-center" id="grid1">
+        <div class="row">
+          <div class="col" style="border-top: 50px; border-bottom: 50px;
+          margin-top: 50px; margin-bottom: 50px; font-size: 40px;">
+            운동량 
+          </div>
+        </div>
+      </div>
+      
+      <!-- 검색창 -->
+    <div class="row" style="color: #F8F8F8;text-align: center;margin-bottom: 30px;">
+      <div class="col-5"></div>
+      <div class="col-2"> <form role="form" autocomplete="on" id="form-buscar" method="get" action="search">
+        <div class="form-group">
+            <div class="input-group">
+                <input id="search" class="form-control" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  name="name" placeholder="오늘의 운동량!!"required/>
+                <span class="input-group-btn">
+                    <button class="btn btn-success" type="submit">
+                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Search
+                    </button>
+                </span>
+            </div>
+        </div>
+    </form></div>
+      <div class="col-5"></div>
+    </div>
+    <div class="container text-center">
+        <div class="row" id="grid1">         
+            <div class="col-12">
+                <div id="table1 " >
+                      <table class="table align-middle" >
+                        <thead style="height: 100px; vertical-align : middle;">
+                          <tr >
+                            <th scope="col">어푸</th>
+                            <th scope="col">거리</th>
+                            <th scope="col">세트</th>
+                            <th scope="col">사이클</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr style="height: 100px;">
+                            <th scope="row">워밍업</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr style="height: 100px;">
+                            <th scope="row">메인</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr style="height: 100px;">
+                            <th scope="row">다운</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

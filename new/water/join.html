@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
+    <script>
+         function join(){
+            window.location.href = "login.html";  
+    }
+    </script>
+</head>
+<body>
+    <div id="title1">Water Dog</div> 
+    <div class="login-wrapper">  
+        <h2 style="margin-top: 50px;
+                  margin-bottom: 50px;
+                  text-align: center;
+                  font-size: 30px;">회원가입</h2>
+        <form method="post" action="index.html" id="login-form">
+            <input type="text" name="userName" placeholder="Email">
+            <input type="password" name="userPassword" placeholder="Password">
+            <input type="password" name="userPassword" placeholder="Password 확인">
+            <label for="remember-check">
+               
+            </label>
+            <input class="login_btn" type="button" value="회원가입"  onclick="join()">
+            
+        </form>
+    </div>
+</body>
+</html>

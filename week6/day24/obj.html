@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체정리</title>
+    <script>
+        let obj = new Object();
+        let obj2 = {};
+        //빈 객체선언 위의 내용은 동일함
+        obj.nm = '미래융합'
+        obj.hp = '0422471922';
+        console.log(obj);
+        obj2['nm'] = '미래융합';
+        obj2['hp'] = '0422471922';  // key : value
+        console.log(obj,obj2);
+        obj['nm']= 'IT학원';    // 동일한 key -> 수정됨
+        // 객체의 for
+        for(let key in obj){    //for i in <--객체의 for in 문의 인자에는 키가 옴
+            console.log(key, obj[key]);
+        }
+  
+        //객체의 key가 필요할때
+        let keys = Object.keys(obj);
+        console.log(keys);
+        for(let i = 0; i < keys.length; i++){
+            console.log(keys[i],obj[keys[i]]);
+        }
+        let values = Object.values(obj); //해당 obejct 의 value만 가져오기
+        console.log(values);
+        let keyValue = Object.entries(obj) // 키-값 쌍으로 배열리턴 [[key,value]]
+        console.log(keyValue);
+        let copy_obj = obj; //얕은 복사( 주소만 복사됨 )
+        copy_obj['nm']='팽수';
+        console.log(obj, copy_obj);
+        let copy2_obj = JSON.parse(JSON.stringify(obj));
+        copy2_obj['nm']='길동';
+        console.log(obj, copy2_obj);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

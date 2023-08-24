@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.get('https://api.upbit.com/v1/market/all', function (data) {
+                for (let i = 0; i < data.length; i++) {
+                    let str = '';
+                    str = '<tr>';
+                    str += '<td class="market">' + data[i].market + '</td>';
+                    str += '<td class="english_name">' + data[i].english_name + '</td>';
+                    str += '<td class="korean_name">' + data[i].korean_name + '</td>';
+                    str += '</tr>';
+                    $('tbody').append(str);
+                }
+                let options={
+                    valueNames: ['market','korean_name', 'english_name']
+                    ,page : 10 // 출력행수
+                    ,pagination : true
+                };
+                let userList = new List('users', options);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="cart mb-3">
+            <div id="users">
+                <!--검색 부분-->
+                <div class="input-group">
+                    <input type="text" class="search form-control" placeholder="search">
+                    <button class="sort btn input-group-text" data-sort="korean_name">kr</button>
+
+                </div>
+                <!--테이블 부분--> 
+                <table class="table table-hover">
+                    <tbody class="list"></tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+                    <ul class="pagination"></ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

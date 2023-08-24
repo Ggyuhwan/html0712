@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수정리</title>
+    <script>
+        /*
+        1. 선언적 함수 function 함수명 (){ 
+            실행로직    }
+        2. 익명함수     function(){
+            실행로직    }
+            -화살표 함수 () => {실행로직}
+            */
+        function add(a, b){
+            return a + b;
+        }
+        
+        // 익명함수
+        let add1 = function(a, b){
+            return a + b;
+        }
+        console.log(add1(1, 3))
+        //화살표 함수
+        let add2 = (a,b)=>{
+            return a + b;
+        }
+        // 화살표 함수에서는 단일 표현식만 포함하는 경우 중괄호와 return 생략가능
+        let add3 = (a,b) => a + b;
+        // 매개 변수가 1개라면 괄호도 생략가능
+        let add4 = x => x * x;
+        // javascript에서는 콜백함수 (callback function)를 많이사용
+        // 다른 함수에 전달되는 함수 (일반적으로 다른 함수의 인자로 전달되며,
+        // 메인함수 종료 후 호출함.)
+
+        function fn_print(name){
+            console.log('hello, ' + name);
+        }
+        function fn_alert(name){
+            alert(name);
+        }
+        function fn_action(callback){
+            let name = prompt("이름을 입력하세용!");
+            callback(name);
+        }
+        fn_action(fn_print);
+        fn_action(fn_alert);
+
+        setInterval(function(){console.log('hi')}, 1000);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
