@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일기장</title>
+    
+    <style>
+        body{ background-color: #f7f3e9; font-family: 'Courier New', Courier, monospace;}
+        .container{
+            max-width: 600px; margin: 20px auto; background-color: #ffffff;
+            padding: 30px; box-shadow: 0px 0px 12px rgba(0, 0, 0,0.1);
+        }
+        label{ font-weight: bold; display: block; margin-bottom: 10px;}
+        input[type='text'],textarea{
+            width: 100%; padding: 10px;
+            margin-bottom: 20px; border: 1px solid #ccc;
+        }
+        input[type = 'submit']{background-color: #4CAF50; color: white;
+        padding: 14px 20px; border: none; border-radius:4px ;
+        cursor: pointer; }
+        input[type='submit']:hover{background-color: #4CA049;}
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h2>My Diary</h2>
+        <form method="post" action="write">
+            <label for="title">제목 :</label>
+            <input type="text" id="title" name="title"><br>
+            <label for="content">내용 :</label>
+            <textarea name="content" id="content" rows="15"></textarea>
+            <input type="submit" value="전송">
+        </form>
+    </div>
+</body>
+</html>

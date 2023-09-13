@@ -6,35 +6,36 @@
     <title>위치정보 가져오기</title>
     <style>
         html, body{ height: 100%;}
-        div {margin: 0; padding: 0;}
+        div { margin: 0; padding: 0; }
         #map {height: 100%;}
     </style>
 </head>
 <body>
-    <h3>getCurrentPosition() 현재위치 파악</h3>
+    <h3>getCurrentPosition() 현재 위치파악</h3>
     <hr>
     <!-- <div id="map" style="width: 600px; height: 500px;"></div> -->
     <iframe src="" frameborder="0" id="map" width="1000px" height="600px"></iframe>
     <div id="msg"></div>
     <script>
-        if(!navigator.geolocation){
+         if(!navigator.geolocation ) {
             alert("지원하지 않음");
-        }else{
+         }else{
             navigator.geolocation.getCurrentPosition(found);
-        }
-        function found(postition){
-            let now = new Date(postition.timestamp);
-            let lat = postition.coords.latitude; //위도
-            let lon = postition.coords.longitude; //경도
-            let acc = postition.coords.accuracy;
-            let msg = "현재시간:" + now.toDateString() + "<br>";
-            msg += "현재위치(위도 "+lat + ", 경도 " + lon + ")<br>";
+         }
+         function found(position){
+              let now = new Date(position.timestamp);
+              let lat = position.coords.latitude; // 위도 
+              let lon = position.coords.longitude; // 경도 
+              let acc = position.coords.accuracy;
+              let msg = "현재 시간:" + now.toUTCString() + "<br>";
+                  msg += "현재 위치(위도 " + lat + ", 경도 "+lon +")<br>";
             console.log(lat);
+            console.log(position);
             document.getElementById('msg').innerHTML = msg;
-            document.getElementById('map').src =
-             "https://map.kakao.com/link/to/미래융합,"+lat+","+lon;
-        }
+            document.getElementById('map').src = 
+                    "https://map.kakao.com/link/to/미래융합,"+lat+","+lon;
+         }
+         
     </script>
-
 </body>
 </html>
