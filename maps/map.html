@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+
+</head>
+
+<body>
+    <div id="container" style="height: 1000px;"></div>
+    <script>
+        Highcharts.mapChart('container', {
+            chart: {
+                map: 'countries/us/us-all'
+                , events: {
+                    load: function() {
+                        alert('지도 로드 완료!');
+                    },
+                    redraw: function() {
+                        console.log('지도 다시 그림!');
+                    },
+                    click: function(event) {
+                        alert('클릭한 지역: ' + this.name);
+                        event.preventDefault(); // 기본 동작 막기
+                    }
+                }
+            },
+
+            title: {
+                text: '미국 지도'
+            },
+
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+
+            colorAxis: {
+                min: 0
+            },
+
+            series: [{
+                data: [
+                    ['us-ma', 5], // Massachusetts 주에 값 5 지정
+                    ['us-wa', 10], // Washington 주에 값 10 지정
+                    // ... 나머지 주의 데이터 추가
+                ],
+                name: '데이터 이름',
+                states: {
+                    hover: {
+                        color: '#BADA55'
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+                
+            }]
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin="">
+        </script>
+    <style>
+        #mapid {
+            background-color: #ffffff;
+        }
+
+        .leaflet-tooltip {
+            background-color: red;
+            border: none;
+            color: white;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="mapid" style="height: 800px; width: 800px;"></div>
+    <script>
+        let gu_data;
+        
+        $.getJSON('TL_SCCO_SIG.json', function (jd) {
+            gu_data = jd;
+        });
+        function get_data(code){
+            
+            let select_data = {};
+            // 깊은 복사 
+            Object.assign(select_data, gu_data);
+            console.log(select_data);
+            let properties = [];
+            $.each(select_data.features, function (i, v) {
+                if ( v['properties']['SIG_CD'].substr(0,2) == code) {
+                    console.log(v);
+                    properties.push(v);
+                }
+            });
+            select_data.features = properties;
+            return select_data;
+        }
+   
+        // 색 랜덤함수 
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';   
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        // Leaflet.js에서 지도의 확대 수준을 조정하려면 setView 함수에서 줌 레벨을 조절하면 됩니다. 
+        // 줌 레벨은 0부터 시작하여 숫자가 커질수록 더 많이 확대되는 방식으로 작동합니다.
+        // 해당 좌표 중심으로 지도를 보여줌 
+        var map = L.map('mapid').setView([36.321655, 127.378953], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // 행정구역 geoJson (다른 데이터를 쓰면 더욱 상세하게 가능 각 국가별로 제공함 )
+        let detailedGeojsonLayer;
+        $.getJSON('SIDO_MAP_2022.json', function (data) {
+            L.geoJson(data, {
+                    // 영역색 
+                    style: function (feature) {
+                        return { color: getRandomColor() };
+                    },
+                    // 이벤트 
+                    onEachFeature: function (feature, layer) {
+                        layer.bindTooltip(feature.properties.CTP_KOR_NM);
+                        layer.on({
+                            click: function (e) {
+                                alert("You've clicked on: " + feature.properties.CTP_KOR_NM);
+                                map.flyTo(e.latlng, 9);
+                                var detailedGeojsonData = get_data(feature.properties.CTPRVN_CD);
+                                console.log(detailedGeojsonData);
+                                if (map.hasLayer(detailedGeojsonLayer)) {
+                                    map.removeLayer(detailedGeojsonLayer);
+                                }
+                                detailedGeojsonLayer = L.geoJson(detailedGeojsonData, {
+                                    style:  function (feature) {
+                                        return { color: getRandomColor() };
+                                    },
+                                    onEachFeature: function (detailedFeature, detailedLayer) {
+                                        detailedLayer.bindTooltip(detailedFeature.properties.SIG_KOR_NM);
+                                        detailedLayer.on('click', function () {
+                                            alert('You clicked ' + detailedFeature.properties.SIG_KOR_NM);
+                                        });
+                                    }
+                                }).addTo(map);
+                            }
+                        });
+                    }
+                }).addTo(map);
+        });
+
+
+        // fetch('SIDO_MAP_2022.json').then(response => response.json()).then(data => {
+        //         L.geoJson(data, {
+        //             // 영역색 
+        //             style: function (feature) {
+        //                 return { color: getRandomColor() };
+        //             },
+        //             // 이벤트 
+        //             onEachFeature: function (feature, layer) {
+        //                 layer.bindTooltip(feature.properties.CTP_KOR_NM);
+        //                 layer.on({
+        //                     click: function (e) {
+        //                         alert("You've clicked on: " + feature.properties.CTP_KOR_NM);
+        //                         map.flyTo(e.latlng, 9);
+        //                         var detailedGeojsonData = get_data(feature.properties.CTPRVN_CD);
+        //                         console.log(detailedGeojsonData);
+        //                         if (map.hasLayer(detailedGeojsonLayer)) {
+        //                             map.removeLayer(detailedGeojsonLayer);
+        //                         }
+        //                         detailedGeojsonLayer = L.geoJson(detailedGeojsonData, {
+        //                             style:  function (feature) {
+        //                                 return { color: getRandomColor() };
+        //                             },
+        //                             onEachFeature: function (detailedFeature, detailedLayer) {
+        //                                 detailedLayer.bindTooltip(detailedFeature.properties.SIG_KOR_NM);
+        //                                 detailedLayer.on('click', function () {
+        //                                     alert('You clicked ' + detailedFeature.properties.SIG_KOR_NM);
+        //                                 });
+        //                             }
+        //                         }).addTo(map);
+        //                     }
+        //                 });
+        //             }
+        //         }).addTo(map);
+        //     });
+    
+
+    </script>
+</body>
+
+</html>

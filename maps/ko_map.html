@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/kr/kr-all.js"></script>
+
+</head>
+
+<body>
+    <div id="container" style="height: 500px;"></div>
+    <script>
+        var myData = [
+            { id: 'kr-je', value: 5 },
+            { id: 'kr-gg', value: 10 }
+            // ... 나머지 데이터
+        ];
+        Highcharts.mapChart('container', {
+            chart: {
+                map: 'countries/kr/kr-all'
+            },
+
+            title: {
+                text: '한국 지도'
+            },
+
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+
+            series: [{
+                data: myData,
+                name: '데이터 이름',
+                states: {
+                    hover: {
+                        color: '#BADA55'
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                },
+                point: {
+                    events: {
+                        click: function () {
+                            alert('클릭한 지역: ' + this.id);
+                        }
+                    }
+                }
+            }]
+        });
+
+    </script>
+</body>
+
+</html>
